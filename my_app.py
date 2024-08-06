@@ -29,10 +29,9 @@ server = app.server
 df = pd.read_csv("DATOS.csv")
 
 fig = px.scatter(df, x="x", y="y")
-
-fig.update_layout(clickmode='event+select')
-
-fig.update_traces(marker_size=20)
+fig.update_layout(title="DOR and TSNE",plot_bgcolor='white',clickmode='event+select')
+fig.update_xaxes(visible=False)
+fig.update_yaxes(visible=False)
 
 app.layout = html.Div([
     dcc.Graph(
@@ -99,11 +98,14 @@ def get_figure(df, x_col, y_col, selectedpoints, bounds):
 
     fig = px.scatter(df, x=df[x_col], y=df[y_col],text = df["labels"])
 
+    fig.update_layout(title="DOR and TSNE",plot_bgcolor='white',clickmode='event+select')
     fig.update_traces(
         selectedpoints=selectedpoints,
         customdata=df.index,
-        mode="markers+text",
-        marker={"color": "rgba(0, 116, 217, 0.7)", "size": 20},
+        #mode="markers+text",
+        #marker={"color": "rgba(0, 116, 217, 0.7)", "size": 20},
+        marker=dict(size=1.5,line=dict(width=2,color='blue')),
+        textposition= 'top center',
         unselected={
             "marker": {"opacity": 0.3},
             "textfont": {"color": "rgba(0, 0, 0, 0)"},
@@ -114,10 +116,12 @@ def get_figure(df, x_col, y_col, selectedpoints, bounds):
       fig.update_xaxes(
       range=[bounds["x0"],bounds["x1"]],  # sets the range of xaxis
       constrain="domain",  # meanwhile compresses the xaxis by decreasing its "domain"
+      visible = False
       )
       fig.update_yaxes(
       range=[bounds["y0"],bounds["y1"]],  # sets the range of xaxis
       constrain="domain",  # meanwhile compresses the xaxis by decreasing its "domain"
+      visible = False
       )
     """
     fig.update_layout(
@@ -153,8 +157,11 @@ def callback_1(selection1,aux):
     except:
       bounds = {"x0": "nel", "x1": "nel", "y1" : "nel", "y0": "nel"}
       datos_extra = json.dumps({"actualizaciones":0}, indent=2)
-      #aux = json.dumps(datos_extra, indent=2)
-      return  [px.scatter(df, x=df["x"], y=df["y"]), json.dumps(bounds, indent=2), datos_extra]
+      fig = px.scatter(df, x=df["x"], y=df["y"])
+      fig.update_layout(title="DOR and TSNE",plot_bgcolor='white',clickmode='event+select')
+      fig.update_xaxes(visible=False)
+      fig.update_yaxes(visible=False)
+      return  [fig, json.dumps(bounds, indent=2), datos_extra]
     #selectedpoints = df.index
     bounds = {"x0": x0, "x1": x1, "y1" : y1, "y0": y0}
     aux_decod = json.loads(aux)
