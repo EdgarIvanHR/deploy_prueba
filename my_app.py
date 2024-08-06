@@ -24,8 +24,9 @@ styles = {
 app = Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 # make a sample data frame with 6 columns
-np.random.seed(234)
-df = pd.DataFrame(zip(np.random.rand(30),np.random.rand(30),[str(a) for a in range(30)] ,30*[False]), columns=("x","y","labels","selected"))
+#np.random.seed(234)
+#df = pd.DataFrame(zip(np.random.rand(30),np.random.rand(30),[str(a) for a in range(30)] ,30*[False]), columns=("x","y","labels","selected"))
+df = pd.read_csv("DATOS.csv")
 
 fig = px.scatter(df, x="x", y="y")
 
