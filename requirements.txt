@@ -1,7 +1,6 @@
 dash==2.17.1
-numpy==2.0.1
-pandas==2.2.2
-plotly==5.23.0
-gunicorn
-dash-tools
+numpy==1.26.4
 json==2.0.9
+pandas==2.1.4
+plotly==5.15.0
+gunicorn
