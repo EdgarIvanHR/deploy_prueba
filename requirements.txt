@@ -1,5 +1,5 @@
-dash==2.6.0
-numpy==1.26.4
-json==2.0.9
-pandas==2.1.4
+dash
+numpy
+json
+pandas
 gunicorn
