@@ -9,7 +9,7 @@ from dash import Dash, dcc, html, Input, Output, callback
 import numpy as np
 import pandas as pd
 import plotly.express as px
-import json
+import ujson as json
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
