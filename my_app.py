@@ -25,10 +25,10 @@ styles = {
 app = Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 # make a sample data frame with 6 columns
-df = pd.read_csv("DOR_TSNE.csv")
+df = pd.read_csv("TCOR_TSNE.csv")
 #texto= [t for t in df["labels"]]
 fig = px.scatter(df, x="x", y="y")
-fig.update_layout(title="DOR and TSNE",plot_bgcolor='white')
+fig.update_layout(title="TCOR and TSNE",plot_bgcolor='white')
 fig.update_traces(marker=dict(size=1,line=dict(width=1,color='blue')))
 #fig.update_layout(clickmode='event')
 fig.update_xaxes(visible=False)
@@ -109,7 +109,7 @@ def get_figure(df, x_col, y_col, selectedpoints, bounds,estado):
     #texto = [str(t) for t in df["labels"]]
     #texto = df["labels"]
     fig = px.scatter(df, x= x_col, y= y_col,text = texto)
-    fig.update_layout(title="DOR and TSNE",plot_bgcolor='white',dragmode ="zoom")
+    fig.update_layout(title="TCOR and TSNE",plot_bgcolor='white',dragmode ="zoom")
     
     fig.update_traces(
         selectedpoints=selectedpoints,
@@ -189,7 +189,7 @@ def get_initial_values(N):
 
 def reset_figure(df):
     fig = px.scatter(df, x="x", y="y")
-    fig.update_layout(title="DOR and TSNE",plot_bgcolor='white')
+    fig.update_layout(title="TCOR and TSNE",plot_bgcolor='white')
     fig.update_traces(marker=dict(size=1,line=dict(width=1,color='blue')))
     #fig.update_layout(clickmode='event')
     xmin, xmax, ymin,ymax = min(df["x"]),max(df["x"]),min(df["y"]),max(df["y"])
