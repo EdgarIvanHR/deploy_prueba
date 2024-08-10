@@ -27,7 +27,7 @@ styles = {
 
 
 app = Dash(__name__, external_stylesheets=external_stylesheets)
-#server = app.server
+server = app.server
 
 # la figura inicial es todo blanco
 # aunque recordemos que cuando se carga la página, se hace un llamado en el callback
@@ -459,4 +459,4 @@ def inicializar_drop_downs(contents,name,date):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8054)
+    app.run_server()
