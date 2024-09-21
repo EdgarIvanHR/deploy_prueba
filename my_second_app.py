@@ -423,7 +423,7 @@ def submit_button(boton, DPX,DPY,DPL,contents,name,date):
     
     try:
         df = parse_contents(contents, name, date)
-        df = df.reindex([DPX,DPY,DPL], axis=1)
+        #df = df.reindex([DPX,DPY,DPL], axis=1)
         fig, punto_medio  = reset_figure(df,DPX,DPY)
         columnDefs = [{'field': str(col)} for col in df.keys()]
         xylabels = [DPX,DPY,DPL]
